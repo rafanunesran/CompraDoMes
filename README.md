@@ -23,6 +23,8 @@ Próximas fases: leitura do cupom fiscal (QR Code da NFC-e), junção de produto
 
 ## Configuração
 
+> **Guia detalhado para publicar sem instalar nada:** [`docs/PASSO-A-PASSO.md`](docs/PASSO-A-PASSO.md) (Supabase + Vercel).
+
 1. Crie um projeto em [supabase.com](https://supabase.com).
 2. No **SQL Editor**, rode o conteúdo de `supabase/migrations/20261002000000_init.sql` (ou use `supabase db push` com a CLI).
 3. Em **Authentication → URL Configuration**, coloque a URL do site em *Site URL* e adicione `https://SEU-SITE/auth/callback` em *Redirect URLs* (`http://localhost:3000/auth/callback` para desenvolvimento).
