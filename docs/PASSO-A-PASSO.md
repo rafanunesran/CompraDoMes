@@ -36,9 +36,10 @@ Assim a Vercel publica sempre o código do `main`.
 
 1. No menu lateral, abra o **SQL Editor** e clique em **New query**.
 2. No GitHub, abra o arquivo [`supabase/migrations/20261002000000_init.sql`](../supabase/migrations/20261002000000_init.sql), clique em **Raw** e copie **todo** o conteúdo.
-3. Cole no editor do Supabase e clique em **Run** (ou Ctrl+Enter).
-4. Deve aparecer **"Success. No rows returned"**.
-5. Para conferir, abra **Table Editor**. Devem aparecer as tabelas `households`, `household_members`, `stores`, `products`, `skus`, `shopping_lists`, `list_items`, `purchases`, `purchase_items` e `price_observations`.
+3. **Antes de colar**, confira o seletor ao lado dos botões **Save / Run**: ele precisa estar em **Primary database** (ou `postgres`), e **não** em **Logs**. Se aparecer "Logs", troque no seletor ou abra uma nova query em **+ → New query**.
+4. Cole no editor do Supabase e clique em **Run** (ou Ctrl+Enter).
+5. Deve aparecer **"Success. No rows returned"**.
+6. Para conferir, abra **Table Editor**. Devem aparecer as tabelas `households`, `household_members`, `stores`, `products`, `skus`, `shopping_lists`, `list_items`, `purchases`, `purchase_items` e `price_observations`.
 
 > Rode esse SQL **uma vez só**. Se rodar de novo, vai aparecer o erro "already exists". Isso só quer dizer que as tabelas já foram criadas.
 
@@ -119,6 +120,7 @@ Esse passo faz o login e os links de confirmação voltarem para o seu site.
 | Fica voltando para a tela de login | Confira as duas variáveis e a **Site URL** do Supabase (passo 4). Tente também numa aba anônima. |
 | E-mail de confirmação não chega | Limite do envio gratuito do Supabase. Desligue **Confirm email** (passo 2.3) e crie a conta de novo. |
 | Link do e-mail abre `localhost` | A **Site URL** do Supabase ainda está como `http://localhost:3000`. Troque pelo link da Vercel. |
+| "Failed to get project's logs" ou aviso sobre *ClickHouse* no SQL Editor | A query foi rodada na fonte **Logs**, e não no banco. Troque o seletor ao lado de **Save / Run** para **Primary database** e rode de novo. |
 | Erro "relation ... does not exist" | O SQL do passo 2.2 não foi rodado, ou foi rodado em outro projeto do Supabase. |
 | "código de convite inválido" | Confira as 6 letras e números do código, em **Mais → Casa e família**. |
 | A lista não atualiza em tempo real no outro celular | Puxe a tela para recarregar. Confira em **Database → Publications → supabase_realtime** se `list_items` e `purchase_items` estão marcadas. |
