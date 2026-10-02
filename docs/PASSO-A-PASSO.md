@@ -56,7 +56,7 @@ Dá para religar depois, quando o app já estiver em uso.
 
 1. Vá em **Project Settings → API Keys** (em alguns painéis o nome é **API** ou **Data API**).
 2. Copie e deixe guardados:
-   - **Project URL**: algo como `https://abcdefgh.supabase.co` (fica em *Data API* ou no topo da página de API).
+   - **Project URL**: algo como `https://abcdefgh.supabase.co` (fica em *Data API* ou no topo da página de API). Use **só** `https://xxxx.supabase.co`, sem `/rest/v1` e sem barra no fim.
    - **Chave pública**: a **`anon` `public`** ou a **publishable** (`sb_publishable_...`). Qualquer uma das duas funciona.
 
 > **Nunca** use a chave `service_role` ou a *secret*: elas dão acesso total ao banco.
@@ -121,6 +121,7 @@ Esse passo faz o login e os links de confirmação voltarem para o seu site.
 | E-mail de confirmação não chega | Limite do envio gratuito do Supabase. Desligue **Confirm email** (passo 2.3) e crie a conta de novo. |
 | Link do e-mail abre `localhost` | A **Site URL** do Supabase ainda está como `http://localhost:3000`. Troque pelo link da Vercel. |
 | "Failed to get project's logs" ou aviso sobre *ClickHouse* no SQL Editor | A query foi rodada na fonte **Logs**, e não no banco. Troque o seletor ao lado de **Save / Run** para **Primary database** e rode de novo. |
+| "Invalid path specified in request URL" ao criar conta | A `NEXT_PUBLIC_SUPABASE_URL` na Vercel tem um caminho a mais, como `/rest/v1/`. Deixe só `https://xxxx.supabase.co` e faça **Redeploy**. |
 | Erro "relation ... does not exist" | O SQL do passo 2.2 não foi rodado, ou foi rodado em outro projeto do Supabase. |
 | "código de convite inválido" | Confira as 6 letras e números do código, em **Mais → Casa e família**. |
 | A lista não atualiza em tempo real no outro celular | Puxe a tela para recarregar. Confira em **Database → Publications → supabase_realtime** se `list_items` e `purchase_items` estão marcadas. |
